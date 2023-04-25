@@ -1,0 +1,129 @@
+//ajouter 3 actualités
+INSERT INTO t_actualite_actu (actu_id, actu_intitule, actu_texte, actu_date, cpt_id) VALUES(NULL, 'la fête des pairs !', 'Puisque j’ai commis un impair et loupé la fête des pères, je me rattrape en vous proposant aujourd’hui de célébrer la fête des pairs !\r\nPartons donc à la découverte de ces fameux nombres pairs. Et comme les chiens ne font pas de chats, sachez que les nombres pairs ne font pas d’impairs !', '2017-06-19 17:02:02', 5);
+INSERT INTO t_actualite_actu (actu_id, actu_intitule, actu_texte, actu_date, cpt_id) VALUES(NULL, 'Tore Thor', 'Par Odin, par Toutatis, par Tore Thor ! Mais qu’est-ce que c’est que ce mot ? Cette question est bien légitime, vous n’avez pas tore tort. Mais vous êtes maintenant habitués, souvent, c’est ici qu’on se tore tord les méninges (bon, je crois que je les ai toutes faites). ', '2016-04-27 10:20:02', 7);
+INSERT INTO t_actualite_actu (actu_id, actu_intitule, actu_texte, actu_date, cpt_id) VALUES(NULL, ' Lemniscate.', 'Allez, pour ce mercredi je vous narre un mot qui reste relativement connu mais que certain(e)s ignorent peut-être encore : Lemniscate. Ce mot féminin ne fait pas référence à un lemming qui aurait copulé avec un suricate. Non, la lemniscate, c’est le nom d’un symbole très connu pour peu qu’on ait fait un peu de mathématiques dans …', '2015-06-03 19:07:45', 3);
+
+//ajouter comptes
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'respon_quiz', 'responsable');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'naname', 'nanama');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'MD_jadore', 'jadore');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'fox888', 'lulumen');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'hugogekkk', 'hugoge');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'MD_enzobon', 'enzobon');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'MD_admin', 'administrateur1');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'mimamima', 'testeur');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'testeur2', 'testeur2');
+INSERT INTO t_compte_cpt (cpt_id, cpt_mdp, cpt_pseudo) VALUES(NULL, 'testeur3mima', 'testeur3');
+
+//ajouter joueur
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(NULL, 'alia', 0, 1);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(NULL, 'sand', 0, 1);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(NULL, 'stend',0, 2);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(NULL, 'jack', 0, 3);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(NULL, 'bob', 0, 4);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(NULL, 'Tom', 0, 2);
+//ajouter match
+INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin) VALUES('Orthog22', 'Match sur l\'orthogonalité débutant', 'A', 3, NULL, '2022-12-08', NULL);
+INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin) VALUES('OtgAnc22', 'Match sur l\'orthogonalité avancée', 'D', 4, NULL, '2022-12-06', NULL);
+INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin) VALUES('Vecteu22', 'match sur vecteur', 'A', 3, NULL, '2022-10-31', '2022-12-02');
+INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin) VALUES('Varial22', 'match sur les variables aléatoires', 'A', 1, NULL, '2022-10-28', '2022-11-07');
+
+//ajouter profil
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('Valeri', 'Marc', 'A', '2012-10-09 15:50:18', 'responsable_quiz@qzmail.com', 'A', NULL, 1);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('MEDAL', 'John', 'A', '2012-09-03 04:50:59', 'administrateur1_quiz@qzmail.com', 'A', NULL, 8);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('MARTIN', 'liam', 'F', '2017-10-10 07:51:28', 'liam_martin@quizmail.com', 'A', NULL, 2);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('BERNARD', 'Emma', 'F', '2016-08-17 21:51:46', 'emme_ber@qzmail.com', 'A', NULL, 3);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('PETIE', 'jade', 'F', '2014-07-08 11:08:34', 'jadore_pt@qzmail.com', 'A', NULL, 4);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('RICHARD', 'lulu', 'F', '2022-10-10 11:52:38', 'luulu_rich@qzmail.com', 'A', NULL, 5);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('ROBERT', 'Hugo', 'F', '2022-01-08 03:41:50', 'hugo_rb@qzmail.com', 'A', NULL, 6);
+INSERT INTO t_profil_plf (plf_nom, plf_prenom, plf_role, plf_date, plf_mail, plf_etat, plf_id, cpt_id) VALUES('MOREL', 'enzo', 'F', '2022-04-20 07:17:35', 'enzo_morel@qzmqil.com', 'A', NULL, 7);
+
+//ajouter des question
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Si on répète n fois une épreuve, ces épreuves seront indépendantes si :', 2, 1);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Quand les différentes issues d\'une épreuve ont la même probabilité, on dit qu\'elles sont...', 2, 1);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Une épreuve de Bernouilli admet :', 2, 1);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Pour une variable aléatoire suivant une loi de Bernouilli, avec X = 1 de probabilité p et X = 0 autrement, E(X) vaut :', 2, 1);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'L\'espérance d\'une somme de variable aléatoires E(aX) peut s\'écrire :', 3, 2);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'L\'espérance d\'une variable aléatoire est une fonction...', 3, 2);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'L\'espérance d\'une variable aléatoire X suivant une loi binomiale de paramètre (n ; p) peut s\'écrire :', 3, 2);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Si une droite et un plan sont sécants, cette droite et ce plan n’ont qu’un seul point d’intersection.', 4, 3);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Lequel de ces termes détermine la « taille » d’un vecteur →AB ?', 4, 3);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'A quoi est égal le produit scalaire de deux vecteurs u et v ?', 5, 4);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Deux vecteurs u et v sont orthogonaux si et seulement si...', 5, 4);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'La variable aléatoire X suit une loi binomiale B(50 ; 0,2). L\'espérance mathématique E(X) vaut :', 2, 1);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'On lance 100 fois une pièce. La variable X correspondant au nombre de fois où on obtient « face »...', 3, 2);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'On lance un dé à 6 faces. X étant la variable aléatoire égale au chiffre obtenu, que vaut P(X < 3) = ?', 3, 2);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Que forme l’intersection de deux plans sécants ?', 4, 3);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'On dit parfois d’un plan qu’il est le plan médiateur d’un segment. Que cela veut-il dire ?', 4, 3);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Pour prouver que des points A, B et C sont alignés à l’aide de vecteurs, que suffit-il de montrer ?', 4, 3);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Deux vecteurs u et v sont orthogonaux si et seulement si...', 5, 4);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'L’intersection de deux droites orthogonales...', 5, 4);
+INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) VALUES(NULL, 'A', 'Quand peut-on dire qu’une base (i ; j ; k) est orthonormée dans l’espace ?', 5, 4);
+
+//ajoueter des quizs
+INSERT INTO t_quiz_qz (qz_id, qz_image, qz_intitule, cpt_id, qz_etat) VALUES(NULL, 'D:\\L3\\image\\quiz1.png', 'Les variables aléatoires', 2, 'A');
+INSERT INTO t_quiz_qz (qz_id, qz_image, qz_intitule, cpt_id, qz_etat) VALUES(NULL, 'D:\\L3\\image\\quiz3', 'La somme des variables aléatoires', 3, 'A');
+INSERT INTO t_quiz_qz (qz_id, qz_image, qz_intitule, cpt_id, qz_etat) VALUES(NULL, 'D:\\L3\\image\\quiz4', 'Les vecteurs de l\'espace', 4, 'A');
+INSERT INTO t_quiz_qz (qz_id, qz_image, qz_intitule, cpt_id, qz_etat) VALUES(NULL, 'D:\\L3\\image\\quiz5', 'Orthogonalité et distances dans l’espace', 5, 'A');
+
+//ajouter des question
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'L\'issue d\'une épreuve ne dépend pas des autres.', 'A', 1, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'L\'issue d\'une épreuve est identique à chaque répétition.', 'A', 1, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'L\'issue d\'une épreuve exclut une autre.', 'A', 1, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'équiprobables\r\n', 'A', 2, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'coprobables\r\n', 'A', 2, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'équivalentes', 'A', 2, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'infinité d issues\n', 'A', 3, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'au moins deux issues\r\n', 'A', 3, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'exactement deux issues\n', 'A', 3, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'p/2\r\n', 'A', 4, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, 'p\r\n', 'A', 4, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(NULL, '1-p', 'A', 4, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(13, 'E(aX) = a + E(X)\n', 'A', 5, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(14, 'E(aX) = E(X2\n', 'A', 5, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(15, 'E(aX) = aE(X)', 'A', 5, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(16, '\r\ncontinue\n', 'A', 6, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(17, 'linéaire\n', 'A', 6, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(18, 'non-linéaire', 'A', 6, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(19, '\r\nE(X) = n/p\n', 'A', 7, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(20, 'E(X) = p/n\n', 'A', 7, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(21, 'E(X) = np', 'A', 7, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(22, '\r\nVrai\n', 'A', 8, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(23, 'Faux\n', 'A', 8, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(24, '\r\nle sens\n', 'A', 9, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(25, 'la direction\n', 'A', 9, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(26, 'la norme\n', 'A', 9, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(27, 'sens de u x sens de v x sin (u;v)\n', 'A', 10, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(28, 'direction de u x direction de v x tan (u;v)\n', 'A', 10, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(29, 'norme de u x norme de v x cos (u;v)\n', 'A', 10, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(30, 'ils sont égaux.\r\n', 'A', 11, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(31, '\r\nils sont perpendiculaires.\r\n', 'A', 11, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(32, '\r\nleur produit scalaire est nul.', 'A', 11, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(33, '50', 'A', 12, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(34, '20', 'A', 12, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(35, '10', 'A', 12, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(36, '\r\n1/6', 'A', 14, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(37, '1/2', 'A', 14, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(38, '1/3', 'A', 14, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(39, 'Suit une loi binomiale.\r\n', 'A', 13, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(40, 'Ne suit pas une loi binomiale.\r\n', 'A', 13, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(41, 'Est toujours égal à 50.', 'A', 13, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(42, 'une droite\r\n', 'A', 15, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(43, 'un plan\r\n', 'A', 15, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(44, 'un point', 'A', 15, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(45, 'C’est un plan ne passant pas par le segment.\r\n', 'A', 16, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(46, 'C’est un plan passant par l’extrémité du segment et parallèle à ce segment.\r\n', 'A', 16, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(47, '\r\n\r\nC’est un plan passant par le milieu du segment et orthogonal à ce segment. ', 'A', 16, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(48, 'Les vecteurs AB et AC sont colinéaires.', 'A', 17, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(49, 'Les points A, B et C sont équidistants.\r\n', 'A', 17, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(50, 'AB = AC', 'A', 17, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(51, 'leur produit scalaire est nul.  \r\n', 'A', 18, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(52, 'ils sont égaux.\r\n', 'A', 18, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(53, 'ils sont perpendiculaires.', 'A', 18, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(54, 'ne peut être que vide.\r\n', 'A', 19, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(55, '\r\npeut être vide, ou un point. \r\n', 'A', 19, 'B');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(56, 'ne peut être qu’un point.', 'A', 19, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(57, 'Lorsque ses vecteurs de base ont une norme = 1 et sont parallèles deux à deux.\r\n', 'A', 20, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(58, 'Lorsque ses vecteurs de base ont une norme = 0 et sont parallèles deux à deux.\r\n', 'A', 20, 'N');
+INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon) VALUES(59, 'Lorsque ses vecteurs de base ont une norme = 1 et sont orthogonaux deux à deux.', 'A', 20, 'B');
+

@@ -1,0 +1,69 @@
+//quiz pour test
+	INSERT INTO t_quiz_qz (qz_id, qz_image, qz_intitule, cpt_id, qz_etat) 
+	VALUES(6, 'image', 'quiz_test', 6, 'A');
+
+//les matchs pour des formateur 6(pseudo:hugoge mdp:hugogekkk)
+
+//date debut avant now && date fin nuLL
+	INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin)
+	 VALUES('TEST1', 'Match TEST1', 'A', 6, 10, '2022-12-01', NULL);
+//date debut avant now && date fin non null
+	//fin avant now
+		INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin) 
+		VALUES('TEST2', 'Match TEST2', 'A', 6, 11, '2022-12-01', '2022-12-7');
+	//fin apres now
+		INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin)
+		 VALUES('TEST3', 'Match TEST3', 'A', 6, 12, '2022-12-01', '2022-12-24');
+
+//date debut est now && date fin nuLL
+	INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin)
+	 VALUES('TEST4', 'Match TEST4', 'A', 6, 13, '2022-12-08', NULL);
+//date debut est now && date fin non nuLL
+	//fin avant now
+I		NSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin)
+		 VALUES('TEST5', 'Match TEST5', 'A', 6, 14, '2022-12-08', '2022-12-7');
+	//fin apres now
+		INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin)
+		 VALUES('TEST6', 'Match TEST6', 'A', 6, 15, '2022-12-08', '2022-12-24');
+
+//date debut apres now && date fin nuLL
+	INSERT INTO t_match_mth (mth_code, mth_intitule, mth_etat, qz_id, mth_id, mth_date_debut, mth_date_fin)
+	 VALUES('TEST7', 'Match TEST7', 'A', 6, 16, '2022-12-23', NULL);
+
+
+//les quzstions
+	INSERT INTO t_question_ques (ques_id, ques_etat, ques_texte, cpt_id, qz_id) 
+	VALUES(21, 'A', 'question test', 6, 6);
+
+//les reponse
+
+	INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon)
+	 VALUES(60, 'reponse_test1', 'A', 21, 'B');
+	INSERT INTO t_reponse_rep (rep_id, rep_texte, rep_etat, ques_id, rep_bon)
+	 VALUES(61, 'response_test2', 'A', 21, 'N');
+	 
+//ajouter des joueurs qui a jouée match 10
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(7, 'testeur_match10_1', 0, 10);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(8, 'testeur_match10_2', 0, 10);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(9, 'testeur_match10_3',0, 10);
+
+//ajouter des joueurs qui a jouée match 11
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(10, 'testeur_match11_1', 0, 11);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(11, 'testeur_match11_2', 0, 11);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(12, 'testeur_match11_3',0, 11);
+//ajouter des joueurs qui a jouée match 13
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(13, 'testeur_match12_1', 0, 12);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(14, 'testeur_match12_2', 0, 12);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(15, 'testeur_match12_3',0, 12);
+//ajouter des joueurs qui a jouée match 13
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(16, 'testeur_match13_1', 0, 13);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(17, 'testeur_match13_2', 0, 13);
+INSERT INTO t_joueures_jrs (jrs_id, jrs_pseudo, jrs_score, mth_id) VALUES(18, 'testeur_match13_3',0, 13);
+
+
+
+//réajouter des actualitées apres tous supprimer pour tester l'affichage de message "aucun actualite"
+INSERT INTO t_actualite_actu (actu_id, actu_intitule, actu_texte, actu_date, cpt_id) VALUES(1, 'la fête des pairs !', 'Puisque j’ai commis un impair et loupé la fête des pères, je me rattrape en vous proposant aujourd’hui de célébrer la fête des pairs !\r\nPartons donc à la découverte de ces fameux nombres pairs. Et comme les chiens ne font pas de chats, sachez que les nombres pairs ne font pas d’impairs !', '2017-06-19 17:02:02', 5);
+INSERT INTO t_actualite_actu (actu_id, actu_intitule, actu_texte, actu_date, cpt_id) VALUES(2, 'Tore Thor', 'Par Odin, par Toutatis, par Tore Thor ! Mais qu’est-ce que c’est que ce mot ? Cette question est bien légitime, vous n’avez pas tore tort. Mais vous êtes maintenant habitués, souvent, c’est ici qu’on se tore tord les méninges (bon, je crois que je les ai toutes faites). ', '2016-04-27 10:20:02', 7);
+INSERT INTO t_actualite_actu (actu_id, actu_intitule, actu_texte, actu_date, cpt_id) VALUES(3, ' Lemniscate.', 'Allez, pour ce mercredi je vous narre un mot qui reste relativement connu mais que certain(e)s ignorent peut-être encore : Lemniscate. Ce mot féminin ne fait pas référence à un lemming qui aurait copulé avec un suricate. Non, la lemniscate, c’est le nom d’un symbole très connu pour peu qu’on ait fait un peu de mathématiques dans …', '2015-06-03 19:07:45', 3);
+

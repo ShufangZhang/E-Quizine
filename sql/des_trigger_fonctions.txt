@@ -1,0 +1,114 @@
+DELIMITER //
+CREATE  PROCEDURE `annoncer_match_fini` (IN `id_match` INT)   BEGIN
+    
+	DECLARE liste_joueur VARCHAR(500);
+	DECLARE texte_actu VARCHAR(500);
+	DECLARE date_fin,date_debut datetime;
+
+	SELECT liste_joueur_match(id_match) INTO liste_joueur;
+	SELECT mth_date_debut,mth_date_fin INTO date_debut, date_fin FROM t_match_mth WHERE mth_id=id_match;
+	
+	IF(date_fin IS NOT NULL AND date_fin > date_debut) THEN
+		SELECT concat_ws('-->', mth_intitule,mth_date_debut,mth_date_fin,liste_joueur) INTO texte_actu FROM t_match_mth WHERE mth_id=id_match;
+		insert into t_actualite_actu VALUES (NULL, 'nouveau match fini!',texte_actu,now(),1);
+	end if;
+	
+END//
+DELIMITER ;
+
+****************************
+DELIMITER //
+CREATE PROCEDURE `annoncer_quiz_modifi` (IN `ID_quiz` INT)   BEGIN
+	DECLARE NB_QUES INT;
+	DECLARE TITLE_ACTU VARCHAR(250);
+	DECLARE TEXTE_ACTU VARCHAR(500);
+	
+	SELECT concat_ws('-->',"Modification du quiz",ID_quiz) INTO TITLE_ACTU;
+	select COUNT(ques_id) INTO NB_QUES FROM t_question_ques where qz_id=ID_quiz;
+	
+	if(NB_QUES=1) THEN
+		SET TEXTE_ACTU :="ATTENTION, plus qu'une question!";
+		INSERT INTO t_actualite_actu VALUES(NULL,TITLE_ACTU,TEXTE_ACTU,NOW(),1);
+   end IF;
+	IF(NB_QUES=0) THEN
+		SET TEXTE_ACTU :="QUIZ VIDE!";
+		INSERT INTO t_actualite_actu VALUES(NULL,TITLE_ACTU,TEXTE_ACTU,NOW(),1);
+   
+	ELSE
+		SELECT concat_ws("Suppression une question,",NB_QUES,"question restant") INTO TEXTE_ACTU;
+		INSERT INTO t_actualite_actu VALUES(NULL,TITLE_ACTU,TEXTE_ACTU,NOW(),1);
+	end if;
+END//
+DELIMITER ;
+
+******************************
+DELIMITER //
+CREATE PROCEDURE `nb_match` (OUT `nb_fini` INT, OUT `nb_encour` INT, OUT `nb_venir` INT)   BEGIN
+	select COUNT(mth_id) into nb_fini from t_match_mth where mth_date_fin IS not NULL AND mth_date_fin> mth_date_debut;
+	select count(mth_id) into nb_venir from t_match_mth where mth_date_debut>NOW() AND mth_date_fin is null;
+	select count(mth_id) into nb_encour FROM t_match_mth where mth_date_debut<now() AND mth_date_fin IS NULL ;
+END//
+DELIMITER ;
+
+*****************************************
+DELIMITER //
+CREATE  PROCEDURE `supprime_joueurs` (IN `ID_mth` INT)   BEGIN
+	UPDATE t_joueurs_jrs SET mth_id= NULL WHERE mth_id =ID_mth;
+END//
+DELIMITER ;
+
+*********************************************
+DELIMITER //
+CREATE FUNCTION `liste_joueur_match` (`id_match` INT) RETURNS VARCHAR(500) CHARSET utf8mb4  BEGIN
+	
+	return( select GROUP_CONCAT(jrs_pseudo) 
+			FROM t_joueures_jrs 
+			WHERE mth_id=id_match);  
+END//
+DELIMITER ;
+
+*****************************************************
+DELIMITER //
+CREATE TRIGGER `RAZ` AFTER UPDATE ON `t_match_mth` FOR EACH ROW BEGIN
+	IF OLD.mth_date_debut!=NEW.mth_date_debut AND NEW.mth_date_debut = now() AND NEW.mth_date_fin IS NULL THEN
+		DELETE FROM t_joueures_jrs WHERE mth_id=NEW.mth_id;
+	end if;
+END//
+DELIMITER ;
+
+***************************************************************
+DELIMITER $$
+CREATE TRIGGER `ajout_actu_match` AFTER UPDATE ON `t_match_mth` FOR EACH ROW BEGIN
+	IF(OLD.mth_date_fin IS NULL AND NEW.mth_date_fin IS NOT NULL) THEN
+		
+		call  annoncer_match_fini(NEW.mth_id);
+	end IF;
+END//
+DELIMITER ;
+
+*****************************************************************
+DELIMITER //
+CREATE TRIGGER `annoncer_quiz_modifi` AFTER DELETE ON `t_question_ques` FOR EACH ROW BEGIN
+	DECLARE NB_QUES INT;
+	DECLARE TITLE_ACTU VARCHAR(250);
+	DECLARE TEXTE_ACTU VARCHAR(500);
+	
+	SELECT concat_ws('-->','Modification du quiz',OLD.qz_id) INTO TITLE_ACTU;
+	select COUNT(ques_id) INTO NB_QUES FROM t_question_ques where qz_id=OLD.qz_id;
+		delete from t_actualite_actu where actu_intitule=(select concat_ws('-->',"modification du quiz",old.qz_id));
+
+	if(NB_QUES=1) THEN
+		SET TEXTE_ACTU :="ATTENTION, plus qu'une question";
+		INSERT INTO t_actualite_actu VALUES(NULL,TITLE_ACTU,TEXTE_ACTU,NOW(),1);	
+	end if;
+	IF(NB_QUES=0) THEN
+		SET TEXTE_ACTU :="QUIZ VIDE!";
+		INSERT INTO t_actualite_actu VALUES(NULL,TITLE_ACTU,TEXTE_ACTU,NOW(),1);
+        END IF;
+	IF (NB_QUES >=2) THEN
+		SELECT concat("Suppression dune question, il rest :",NB_QUES,"question") INTO TEXTE_ACTU;
+		INSERT INTO t_actualite_actu VALUES(NULL,TITLE_ACTU,TEXTE_ACTU,NOW(),1);
+	end if;
+END//
+DELIMITER ;
+

@@ -1,0 +1,156 @@
+
+//creation des tables
+CREATE TABLE t_actualite_actu (
+  actu_id int(10) UNSIGNED NOT NULL,
+  actu_intitule varchar(250) DEFAULT NULL,
+  actu_texte varchar(500) NOT NULL,
+  actu_date datetime NOT NULL,
+  cpt_id int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE t_compte_cpt (
+  cpt_id int(10) UNSIGNED NOT NULL,
+  cpt_mdp char(64) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  cpt_pseudo varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+CREATE TABLE t_joueures_jrs (
+  jrs_id int(10) UNSIGNED NOT NULL,
+  jrs_pseudo varchar(20) NOT NULL,
+  jrs_score double DEFAULT NULL,
+  mth_id int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE t_match_mth (
+  mth_code char(8) NOT NULL,
+  mth_intitule varchar(200) NOT NULL,
+  mth_etat char(1) NOT NULL,
+  qz_id int(10) UNSIGNED NOT NULL,
+  mth_id int(10) UNSIGNED NOT NULL,
+  mth_date_debut date NOT NULL,
+  mth_date_fin date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+CREATE TABLE t_profil_plf (
+  plf_nom varchar(60) NOT NULL,
+  plf_prenom varchar(60) NOT NULL,
+  plf_role char(1) NOT NULL,
+  plf_date datetime NOT NULL,
+  plf_mail varchar(60) NOT NULL,
+  plf_etat char(1) NOT NULL,
+  plf_id int(10) UNSIGNED NOT NULL,
+  cpt_id int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE t_question_ques (
+  ques_id int(10) UNSIGNED NOT NULL,
+  ques_etat char(1) NOT NULL,
+  ques_texte varchar(500) NOT NULL,
+  cpt_id int(10) UNSIGNED NOT NULL,
+  qz_id int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE t_quiz_qz (
+  qz_id int(10) UNSIGNED NOT NULL,
+  qz_image varchar(200) NOT NULL,
+  qz_intitule varchar(200) NOT NULL,
+  cpt_id int(10) UNSIGNED NOT NULL,
+  qz_etat char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE t_reponse_rep (
+  rep_id int(10) UNSIGNED NOT NULL,
+  rep_texte varchar(500) NOT NULL,
+  rep_etat char(1) NOT NULL,
+  ques_id int(10) UNSIGNED NOT NULL,
+  rep_bon char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+ALTER TABLE t_actualite_actu
+  ADD PRIMARY KEY (actu_id),
+  ADD KEY cpt_id (cpt_id);
+
+ALTER TABLE t_compte_cpt
+  ADD PRIMARY KEY (cpt_id);
+
+ALTER TABLE t_joueures_jrs
+  ADD PRIMARY KEY (jrs_id),
+  ADD KEY FK_mth_id (mth_id);
+
+ALTER TABLE t_match_mth
+  ADD PRIMARY KEY (mth_id),
+  ADD KEY quiz_id (qz_id);
+
+ALTER TABLE t_profil_plf
+  ADD PRIMARY KEY (plf_id),
+  ADD UNIQUE KEY FK_cpt_id (cpt_id) USING BTREE;
+
+ALTER TABLE t_question_ques
+  ADD PRIMARY KEY (ques_id),
+  ADD KEY FK_id_cpt (cpt_id),
+  ADD KEY FK_id_quiz (qz_id);
+
+ALTER TABLE t_quiz_qz
+  ADD PRIMARY KEY (qz_id),
+  ADD KEY FK_id (cpt_id);
+
+ALTER TABLE t_reponse_rep
+  ADD PRIMARY KEY (rep_id),
+  ADD KEY ques_id (ques_id);
+
+//parametre des données AUTOINCREMENT
+ALTER TABLE t_actualite_actu
+  MODIFY actu_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+ALTER TABLE t_compte_cpt
+  MODIFY cpt_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+ALTER TABLE t_joueures_jrs
+  MODIFY jrs_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+ALTER TABLE t_match_mth
+  MODIFY mth_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+ALTER TABLE t_profil_plf
+  MODIFY plf_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+ALTER TABLE t_question_ques
+  MODIFY ques_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+ALTER TABLE t_quiz_qz
+  MODIFY qz_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+ALTER TABLE t_reponse_rep
+  MODIFY rep_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+//add constrain key
+
+ALTER TABLE t_actualite_actu
+  ADD CONSTRAINT cpt_id FOREIGN KEY (cpt_id) REFERENCES t_compte_cpt (cpt_id);
+
+ALTER TABLE t_joueures_jrs
+  ADD CONSTRAINT FK_mth_id FOREIGN KEY (mth_id) REFERENCES t_match_mth (mth_id);
+
+ALTER TABLE t_match_mth
+  ADD CONSTRAINT quiz_id FOREIGN KEY (qz_id) REFERENCES t_quiz_qz (qz_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE t_profil_plf
+  ADD CONSTRAINT fk_cpt_id FOREIGN KEY (cpt_id) REFERENCES t_compte_cpt (cpt_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE t_question_ques
+  ADD CONSTRAINT FK_id_cpt FOREIGN KEY (cpt_id) REFERENCES t_compte_cpt (cpt_id),
+  ADD CONSTRAINT FK_id_quiz FOREIGN KEY (qz_id) REFERENCES t_quiz_qz (qz_id);
+
+ALTER TABLE t_quiz_qz
+  ADD CONSTRAINT FK_id FOREIGN KEY (cpt_id) REFERENCES t_compte_cpt (cpt_id);
+
+ALTER TABLE t_reponse_rep
+  ADD CONSTRAINT ques_id FOREIGN KEY (ques_id) REFERENCES t_question_ques (ques_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
